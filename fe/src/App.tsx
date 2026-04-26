@@ -1,25 +1,18 @@
-import { useState } from "react";
 import { observer } from "mobx-react-lite";
+
 import { CrtOverlay } from "@/components/CrtOverlay";
 import { GameField } from "@/components/GameField";
 import { HUD } from "@/components/HUD";
 import { Sky } from "@/components/Sky";
-import { SoundGate } from "@/components/SoundGate";
-import { useSounds } from "@/hooks/useSounds";
+import { StartGameOverlay } from "@/components/StartGameOverlay";
+
 import { rootStore } from "@/stores";
 
 export const App = observer(function App() {
 	const { socket, stats } = rootStore;
-	const [playQuack, { stop: stopQuack }] = useSounds("quack");
-	const [soundEnabled, setSoundEnabled] = useState(false);
-	const shouldShowSoundGate =
-		!soundEnabled && socket.status === "connected" && !stats.started;
+	const shouldShowStartGameOverlay = socket.status === "connected" && !stats.started;
 
-	const enableSound = () => {
-		if (soundEnabled) return;
-		playQuack();
-		stopQuack();
-		setSoundEnabled(true);
+	const handleStartGame = () => {
 		socket.startGame();
 	};
 
@@ -28,7 +21,7 @@ export const App = observer(function App() {
 			<Sky />
 			<HUD />
 			<GameField />
-			{shouldShowSoundGate && <SoundGate onEnableSound={enableSound} />}
+			{shouldShowStartGameOverlay && <StartGameOverlay onStartGame={handleStartGame} />}
 			<CrtOverlay />
 		</div>
 	);

@@ -1,12 +1,12 @@
-type SoundGateProps = {
-	onEnableSound: () => void;
+type StartGameOverlayProps = {
+	onStartGame: () => void;
 };
 
-export function SoundGate({ onEnableSound }: SoundGateProps) {
+export function StartGameOverlay({ onStartGame }: StartGameOverlayProps) {
 	return (
 		<div
 			role="dialog"
-			aria-label="Enable sound"
+			aria-label="Start game"
 			className="fixed inset-0 grid place-items-center z-[100] animate-crt-on"
 			style={{
 				background:
@@ -15,7 +15,7 @@ export function SoundGate({ onEnableSound }: SoundGateProps) {
 		>
 			<button
 				type="button"
-				onClick={onEnableSound}
+				onClick={onStartGame}
 				className="relative text-center text-hud-text px-11 py-8 bg-panel-bg"
 				style={{
 					border: "4px solid #ffc83a",
@@ -28,7 +28,7 @@ export function SoundGate({ onEnableSound }: SoundGateProps) {
 					Click anywhere to start the hunt
 				</div>
 				<div className="mt-3.5 font-body text-xl text-hud-mute tracking-[0.06em]">
-					Audio will be enabled on first click
+					Press start to launch the first round
 				</div>
 			</button>
 		</div>
