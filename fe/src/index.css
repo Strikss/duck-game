@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	html,
+	body,
+	#root {
+		@apply m-0 p-0 h-full w-full overflow-hidden;
+	}
+
+	body {
+		@apply font-body text-hud-text bg-sky-top antialiased;
+		text-rendering: optimizeLegibility;
+		image-rendering: pixelated;
+	}
+
+	button {
+		@apply font-[inherit] border-0 bg-transparent p-0 cursor-pointer text-inherit;
+	}
+
+	img {
+		@apply select-none;
+		-webkit-user-drag: none;
+		image-rendering: pixelated;
+	}
+}
