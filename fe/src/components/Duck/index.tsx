@@ -55,7 +55,9 @@ export const Duck = observer(function Duck({ onHitFlash }: DuckProps) {
 			type="button"
 			onClick={handleClick}
 			style={style}
-			aria-label={isHit ? gameConfig.labels.duckHit : gameConfig.labels.duckFlying}
+			aria-label={
+				isHit ? gameConfig.labels.duckHit : gameConfig.labels.duckFlying
+			}
 			className={
 				isHit
 					? `${duckClassName} pointer-events-none cursor-default animate-duck-hit`
@@ -64,7 +66,7 @@ export const Duck = observer(function Duck({ onHitFlash }: DuckProps) {
 		>
 			<img
 				src={duckSprite(phase, frame)}
-				alt=""
+				alt="duck"
 				draggable={false}
 				style={{ transform: `scaleX(${startSide === "right" ? -1 : 1})` }}
 				className="w-full h-full block pointer-events-none"
